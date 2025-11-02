@@ -2,7 +2,7 @@ name: Generate Snake Grid
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Generate every midnight UTC
+    - cron: "0 0 * * *" # Run every midnight UTC
   workflow_dispatch:
 
 jobs:
@@ -12,12 +12,13 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Generate Snake 🐍
+      - name: Generate Snake 🐍 (light and dark)
         uses: Platane/snk@v3
         with:
           github_user_name: ramjam97
           outputs: |
             dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
       - name: Upload to GitHub 🚀
         uses: crazy-max/ghaction-github-pages@v4
